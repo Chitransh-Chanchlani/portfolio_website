@@ -19,16 +19,9 @@
             --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
             
             /* --- GRADIENT BACKGROUNDS (Light Mode) --- */
-            /* Blue to Purple */
             --bg-about: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); 
-            
-            /* Soft Grey to Blue-ish White */
             --bg-skills: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
-            
-            /* Light Slate to Soft Indigo */
             --bg-projects: linear-gradient(135deg, #f1f5f9 0%, #e0e7ff 100%);
-            
-            /* Deep Navy to Black */
             --bg-contact: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
             
             --card-bg: #ffffff;
@@ -116,6 +109,14 @@
             width: 100%;
         }
 
+        /* --- ADJUSTED SPACING (Balanced) --- */
+        #skills {
+            padding-bottom: 3rem !important; /* Increased from 1rem to 3rem */
+        }
+        #projects {
+            padding-top: 3rem !important; /* Increased from 1rem to 3rem */
+        }
+
         .section-title {
             text-align: center;
             font-size: 2.5rem;
@@ -184,7 +185,7 @@
             border-radius: 16px;
             padding: 1.5rem;
             height: 100%;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease; /* Faster transition for color pop */
             box-shadow: var(--shadow);
             display: flex;
             flex-direction: column;
@@ -203,9 +204,12 @@
             transition: transform 0.4s;
         }
 
+        /* NEW HOVER EFFECT: Pop color on border and subtle bg tint */
         .skill-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: var(--primary-color) !important; 
+            background-color: rgba(79, 70, 229, 0.04); /* Subtle primary tint */
         }
         
         .skill-card:hover::before { transform: scaleX(1); }
@@ -218,6 +222,12 @@
 
         body.dark-mode .skill-card { border-color: rgba(255,255,255,0.05); }
         body.dark-mode .skill-card i { filter: drop-shadow(0 0 5px rgba(255,255,255,0.2)); }
+        
+        /* Dark Mode Hover Adjustment */
+        body.dark-mode .skill-card:hover {
+            background-color: rgba(129, 140, 248, 0.1); 
+            border-color: var(--primary-color) !important;
+        }
 
         /* --- 3. PROJECTS SECTION --- */
         #projects {
@@ -232,13 +242,20 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            border: none;
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid transparent; /* Added invisible border so color can pop */
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
         }
         
+        /* NEW HOVER EFFECT FOR PROJECTS */
         .project-card:hover { 
             transform: translateY(-8px); 
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            border-color: var(--primary-color) !important;
+            background-color: rgba(79, 70, 229, 0.04); /* Subtle primary tint */
+        }
+        
+        body.dark-mode .project-card:hover {
+            background-color: rgba(129, 140, 248, 0.1); 
         }
 
         .card-img-top { height: 220px; object-fit: cover; }
@@ -315,7 +332,7 @@
 
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold text-white" href="#">CHITRANSH</a>
+            <a class="navbar-brand fw-bold text-white" href="#"></a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -466,8 +483,7 @@
                             <h5 class="card-title">Adventure Works Analysis</h5>
                             <p class="card-text">A responsive dashboard featuring comprehensive data visualization, user behavior tracking, and real-time sales metrics.</p>
                             <div class="d-flex gap-2 w-100">
-                                <a href="#" target="_blank" class="btn btn-primary flex-fill btn-sm">Report</a>
-                                <a href="#" target="_blank" class="btn btn-outline-dark flex-fill btn-sm">Code</a>
+                                <a href="https://github.com/Chitransh-Chanchlani/Adventure-Works-Analysis" target="_blank" class="btn btn-primary flex-fill btn-sm">Report</a>
                             </div>
                         </div>
                     </div>
@@ -482,7 +498,6 @@
                             <p class="card-text">An end-to-end sales data analysis uncovering customer trends, regional performance, and channel efficiency.</p>
                             <div class="d-flex gap-2 w-100">
                                 <a href="#" target="_blank" class="btn btn-primary flex-fill btn-sm">Report</a>
-                                <a href="#" target="_blank" class="btn btn-outline-dark flex-fill btn-sm">Code</a>
                             </div>
                         </div>
                     </div>
@@ -497,7 +512,6 @@
                             <p class="card-text">Applied K-Means clustering algorithms to analyze purchasing habits and identify distinct customer groups.</p>
                             <div class="d-flex gap-2 w-100">
                                 <a href="#" target="_blank" class="btn btn-primary flex-fill btn-sm">Report</a>
-                                <a href="#" target="_blank" class="btn btn-outline-dark flex-fill btn-sm">Code</a>
                             </div>
                         </div>
                     </div>
